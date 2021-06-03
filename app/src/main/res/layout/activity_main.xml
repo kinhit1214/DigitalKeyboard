@@ -33,7 +33,7 @@
         android:layout_height="89dp"
         android:gravity="right"
         android:layout_weight="1"
-        android:text="окно для вывода резултьтата"/>
+        android:text="окно для вывода резултьтата(заглушка)"/>
 
     <include
         layout="@layout/activity_mainconstrait"
