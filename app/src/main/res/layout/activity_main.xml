@@ -7,37 +7,16 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/textView2"
+    <include
+        layout="@layout/activity_main_screen"
         android:layout_width="match_parent"
-        android:layout_height="97dp"
-        android:layout_weight="1"
-        android:text="Самый обычный калькулятор"
-        android:textSize="25dp"
-        android:gravity="center"
-        android:textColor="@color/black"/>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="156dp"
-        android:layout_weight="1"
-        android:gravity="right |bottom"
-        android:text="Результат"
-        android:textSize="40dp" />
-
-
-    <TextView
-        android:id="@+id/editTextNumber"
-        android:layout_width="match_parent"
-        android:layout_height="89dp"
-        android:gravity="right"
-        android:layout_weight="1"
-        android:text="окно для вывода резултьтата"/>
+        android:layout_height="223dp"
+        android:layout_weight="1" />
 
     <include
         layout="@layout/activity_mainconstrait"
         android:layout_width="match_parent"
-        android:layout_height="311dp" />
+        android:layout_height="591dp"
+        android:layout_weight="2" />
 
 </LinearLayout>
