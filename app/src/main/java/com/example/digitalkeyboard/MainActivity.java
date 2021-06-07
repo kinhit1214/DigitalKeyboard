@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initButton();
         textMission = findViewById(R.id.textView);
+        System.out.println("fd");
 
     }
 
