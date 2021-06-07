@@ -13,7 +13,6 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     private LogicCalculater logic = new LogicCalculater();
     private TextView textMission;
-    private String text = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,5 +56,6 @@ public class MainActivity extends AppCompatActivity {
     private void equally(){
             System.out.println("hi");
             textMission.setText(String.format(Locale.getDefault(),"%s",logic.res()));
+
     }
 }
