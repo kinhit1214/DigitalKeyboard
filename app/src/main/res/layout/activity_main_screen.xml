@@ -21,7 +21,7 @@
         android:layout_weight="3"
         android:gravity="right|center"
         android:text="Результат"
-        android:textSize="40dp"
+        android:textSize="@dimen/res_size"
         android:textColor="@color/black"/>
 
 
