@@ -1,13 +1,11 @@
 package com.example.digitalkeyboard;
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class LogicCalculater {
-
+public class Counters implements Parcelable {
     String number;
     double result = 0;
     String text;
@@ -15,6 +13,30 @@ public class LogicCalculater {
     private int count = 0;
     ArrayList<Double> numbers = new ArrayList<>();
     ArrayList<Character> operators = new ArrayList<>();
+
+    protected Counters(Parcel in) {
+        number = in.readString();
+        result = in.readDouble();
+        text = in.readString();
+        operator = in.readString();
+        count = in.readInt();
+    }
+
+    public static final Creator<Counters> CREATOR = new Creator<Counters>() {
+        @Override
+        public Counters createFromParcel(Parcel in) {
+            return new Counters(in);
+        }
+
+        @Override
+        public Counters[] newArray(int size) {
+            return new Counters[size];
+        }
+    };
+
+    public Counters() {
+
+    }
 
     protected void addText(String buttonText){
         if (text==null){
@@ -36,12 +58,12 @@ public class LogicCalculater {
             if (number == null)
                 number = String.valueOf(text.charAt(text.length() - 1));
             else
-                if (text.charAt(text.length() - 1) == ',')
-                    number += '.';
-                else
-                   number += (text.charAt(text.length() - 1));
-           }
-       }
+            if (text.charAt(text.length() - 1) == ',')
+                number += '.';
+            else
+                number += (text.charAt(text.length() - 1));
+        }
+    }
 
     private boolean chekOpr(char opr){
         return (opr == '-') || (opr == '+') || (opr == '*') || (opr == '/');
@@ -102,5 +124,19 @@ public class LogicCalculater {
         operators.remove(count);
         numbers.remove(count + 1);
         numbers.set(count, result);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(number);
+        dest.writeDouble(result);
+        dest.writeString(text);
+        dest.writeString(operator);
+        dest.writeInt(count);
     }
 }

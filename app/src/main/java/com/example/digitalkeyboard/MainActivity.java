@@ -1,5 +1,6 @@
 package com.example.digitalkeyboard;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -13,6 +14,24 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     private LogicCalculater logic = new LogicCalculater();
     private TextView textMission;
+
+    private final static String KeyCounters = "Counters";
+    Counters counters = new Counters();
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle instanceState) {
+        super.onSaveInstanceState(instanceState);
+        instanceState.putParcelable(KeyCounters, counters);
+    }
+
+    // Восстановление данных
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
+        super.onRestoreInstanceState(instanceState);
+        counters = instanceState.getParcelable(KeyCounters);
+        stringText();
+    }
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,16 +65,20 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logic.addText(buttonText);
-                logic.initNumbers(buttonText);
-                textMission.setText(String.format(Locale.getDefault(),"%s",logic.text));
+                counters.addText(buttonText);
+                counters.initNumbers(buttonText);
+                textMission.setText(String.format(Locale.getDefault(),"%s",counters.text));
             }
         });
     }
 
+    void stringText(){
+        textMission.setText(String.format(Locale.getDefault(),"%s",counters.text));
+    }
+
     private void equally(){
             System.out.println("hi");
-            textMission.setText(String.format(Locale.getDefault(),"%s",logic.res()));
+            textMission.setText(String.format(Locale.getDefault(),"%s",counters.res()));
 
     }
 }
