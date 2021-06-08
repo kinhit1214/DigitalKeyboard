@@ -42,6 +42,10 @@ public class Counters implements Parcelable {
         if (text==null){
             text=buttonText;
         }else {
+            if (chekOpr(text.charAt(text.length()-1)) && buttonText.equals("-")){
+
+            }
+            else
             if (chekOpr(buttonText.charAt(0)) && chekOpr(text.charAt(text.length()-1))){
                 text = text.substring(0,text.length()-1);
                 operators.remove(operators.size()-1);
@@ -54,7 +58,7 @@ public class Counters implements Parcelable {
     protected void initNumbers(String buttonText) {
         if(initOpr(text))
             return;
-        if (!chekOpr(buttonText.charAt(0))){
+        if (buttonText.charAt(0) == '-' || !chekOpr(buttonText.charAt(0))){
             if (number == null)
                 if (text.charAt(text.length() - 1) == ',')
                     number = "0.";
@@ -72,7 +76,7 @@ public class Counters implements Parcelable {
     }
 
     private boolean initOpr(String text) {
-        if ((chekOpr(text.charAt(text.length()-1)) && (number != null))) {
+        if ((chekOpr(text.charAt(text.length()-1)) && (number != null))&&(!(chekOpr(text.charAt(text.length()-2)) && text.charAt(text.length()-1)!='-'))){
             numbers.add(Double.valueOf(number));
             operators.add(text.charAt(text.length()-1));
             number=null;
