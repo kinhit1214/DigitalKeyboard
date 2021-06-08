@@ -42,6 +42,8 @@ public class Counters implements Parcelable {
         if (text==null){
             text=buttonText;
         }else {
+            if (chekOpr(text.charAt(text.length()-1))&&chekOpr(text.charAt(text.length()-2))&&chekOpr(buttonText.charAt(0)))
+                return;
             if (chekOpr(text.charAt(text.length()-1)) && buttonText.equals("-")){
 
             }
@@ -76,6 +78,8 @@ public class Counters implements Parcelable {
     }
 
     private boolean initOpr(String text) {
+        if (chekOpr(text.charAt(text.length()-1))&&chekOpr(text.charAt(text.length()-2)))
+            return false;
         if ((chekOpr(text.charAt(text.length()-1)) && (number != null))&&(!(chekOpr(text.charAt(text.length()-2)) && text.charAt(text.length()-1)!='-'))){
             numbers.add(Double.valueOf(number));
             operators.add(text.charAt(text.length()-1));
@@ -86,14 +90,19 @@ public class Counters implements Parcelable {
 
     protected String res(){
         numbers.add(Double.valueOf(number));
-        for (int i = 0;i<operator.length();i++) {
-            while (operators.size()>0 && count < operators.size()) {
-                if (operators.get(count) == operator.charAt(i)) {
-                    helpRes(operators.get(count));
-                } else count++;
-            }count = 0;
-        }
-        textRes();
+       try {
+           for (int i = 0; i < operator.length(); i++) {
+               while (operators.size() > 0 && count < operators.size()) {
+                   if (operators.get(count) == operator.charAt(i)) {
+                       helpRes(operators.get(count));
+                   } else count++;
+               }
+               count = 0;
+           }
+           textRes();
+       } catch (Exception e) {
+           return "Не правильное выражение";
+       }
         if (result%1!=0)
             return String.valueOf(result);
         else return String.valueOf((int)result);
