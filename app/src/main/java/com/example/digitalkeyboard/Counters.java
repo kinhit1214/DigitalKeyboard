@@ -56,7 +56,9 @@ public class Counters implements Parcelable {
             return;
         if (!chekOpr(buttonText.charAt(0))){
             if (number == null)
-                number = String.valueOf(text.charAt(text.length() - 1));
+                if (text.charAt(text.length() - 1) == ',')
+                    number = "0.";
+                else number = String.valueOf(text.charAt(text.length() - 1));
             else
             if (text.charAt(text.length() - 1) == ',')
                 number += '.';
