@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle instanceState) {
         super.onRestoreInstanceState(instanceState);
         counters = instanceState.getParcelable(KeyCounters);
-        stringText();
     }
 
 
@@ -70,10 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 textMission.setText(String.format(Locale.getDefault(),"%s",counters.text));
             }
         });
-    }
-
-    void stringText(){
-        textMission.setText(String.format(Locale.getDefault(),"%s",counters.text));
     }
 
     private void equally(){
