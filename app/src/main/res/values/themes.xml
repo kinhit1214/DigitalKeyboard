@@ -19,7 +19,7 @@
 
     <style name="ThemeLight" parent="Theme.DigitalKeyboard">
         <item name="android:textColor">@color/black</item>
-        <item name="android:backgroundTint">@color/whiteK</item>
+        <item name="android:backgroundTint">@color/white</item>
     </style>
     <style name="ThemeTwo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="android:background">@color/grey</item>
