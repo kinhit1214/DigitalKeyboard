@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-public class Counters implements Parcelable {
+public class Logic implements Parcelable {
     String number;
     double result = 0;
     String text;
@@ -13,28 +13,30 @@ public class Counters implements Parcelable {
     private int count = 0;
     ArrayList<Double> numbers = new ArrayList<>();
     ArrayList<Character> operators = new ArrayList<>();
+    private int countButtonTheme;
 
-    protected Counters(Parcel in) {
+    protected Logic(Parcel in) {
         number = in.readString();
         result = in.readDouble();
         text = in.readString();
         operator = in.readString();
         count = in.readInt();
+        countButtonTheme = in.readInt();
     }
 
-    public static final Creator<Counters> CREATOR = new Creator<Counters>() {
+    public static final Creator<Logic> CREATOR = new Creator<Logic>() {
         @Override
-        public Counters createFromParcel(Parcel in) {
-            return new Counters(in);
+        public Logic createFromParcel(Parcel in) {
+            return new Logic(in);
         }
 
         @Override
-        public Counters[] newArray(int size) {
-            return new Counters[size];
+        public Logic[] newArray(int size) {
+            return new Logic[size];
         }
     };
 
-    public Counters() {
+    public Logic() {
 
     }
 
@@ -141,6 +143,14 @@ public class Counters implements Parcelable {
         numbers.set(count, result);
     }
 
+    protected void incrementCountButtonTheme(){
+        countButtonTheme++;
+    }
+
+    protected int getCountButtonTheme(){
+        return countButtonTheme;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -153,5 +163,6 @@ public class Counters implements Parcelable {
         dest.writeString(text);
         dest.writeString(operator);
         dest.writeInt(count);
+        dest.writeInt(countButtonTheme);
     }
 }

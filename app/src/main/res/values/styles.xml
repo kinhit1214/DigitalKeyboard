@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyButton">
+        <item name="android:textSize">@dimen/text_size_button</item>
+        <item name="android:layout_width">@dimen/size_button</item>
+        <item name="android:layout_height">@dimen/size_button</item>
+        <item name="android:insetTop">@dimen/size_button</item>
+        <item name="android:insetBottom">@dimen/size_button</item>
+        <item name="android:stateListAnimator">@dimen/_null</item>
+    </style>
+</resources>
